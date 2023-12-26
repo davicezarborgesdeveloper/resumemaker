@@ -6,7 +6,7 @@ class InputField extends StatefulWidget {
   final String? hintText;
   final String? errorText;
   final ValueChanged<String>? onChanged;
-  final Function? onChangedAnother;
+  // final Function? onChangedAnother;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType? keyboardType;
   final bool obscure;
@@ -21,9 +21,9 @@ class InputField extends StatefulWidget {
     this.hintText,
     this.errorText,
     this.onChanged,
-    this.onChangedAnother,
+    // this.onChangedAnother,
     this.inputFormatters,
-    this.keyboardType,
+    this.keyboardType = TextInputType.text,
     this.obscure = false,
     this.initialValue,
     this.controller,

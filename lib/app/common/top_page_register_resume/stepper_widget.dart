@@ -16,15 +16,14 @@ class StepperWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 32),
+      padding: const EdgeInsets.symmetric(vertical: 24),
       child: SizedBox(
-        width: context.screenWidth <= 540 ? 360 : 540,
+        width: context.screenWidth <= 540 ? 320 : 540,
         child: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: steps.asMap().entries.map((stp) {
-                print('${step}-${stp.key}');
                 return Row(
                   children: [
                     Container(
@@ -47,7 +46,7 @@ class StepperWidget extends StatelessWidget {
                         color: (step - 1 > stp.key)
                             ? ColorsApp.i.secondary
                             : ColorsApp.i.primaryLightest,
-                        width: context.screenWidth <= 540 ? 120 : 210,
+                        width: context.screenWidth <= 540 ? 100 : 210,
                         height: 5,
                       ),
                   ],

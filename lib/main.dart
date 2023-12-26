@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
-import 'dart:io';
-import 'package:desktop_window/desktop_window.dart';
-import 'package:flutter/foundation.dart';
-import 'app/core/ui/helpers/enums.dart';
 import 'resume_maker_app.dart';
+// import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  if (Platform.isWindows && !kIsWeb) {
-    await DesktopWindow.setWindowSize(
-      // sizeScreen.parseSize('RedmiNote8'),
-      sizeScreen.parseSize('Small Mobile'),
-    );
-  }
+  // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(const ResumeMakerApp());
 }

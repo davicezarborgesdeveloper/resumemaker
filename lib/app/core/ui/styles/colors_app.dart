@@ -8,9 +8,9 @@ class ColorsApp {
     return _instance!;
   }
 
-  Color get primary => const Color(0xFF70082D);
-  Color get primaryLightest => const Color(0xFFFFD9DE);
-  Color get error => const Color(0xFFC72536);
+  Color get primary => Colors.indigo.shade900;
+  Color get primaryLightest => Colors.indigo.shade100;
+  Color get error => Colors.red;
   Color get background => Colors.white;
 
   Color get secondary => Colors.amberAccent.shade700;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../app/core/ui/helpers/enums.dart';
-import '../../../app/core/ui/styles/text_styles.dart';
+import '../../../../app/core/ui/helpers/enums.dart';
+import '../../../../app/core/ui/styles/text_styles.dart';
 
 class ChangeLanguage extends StatefulWidget {
   final Function(Language language) onSave;
@@ -29,8 +29,9 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Text(
+        Text(
           'Idioma do CV',
+          style: context.textStyles.textRegular.copyWith(fontSize: 12),
         ),
         const SizedBox(width: 16),
         ValueListenableBuilder(

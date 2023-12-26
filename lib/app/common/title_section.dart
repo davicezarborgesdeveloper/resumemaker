@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../app/core/ui/styles/text_styles.dart';
+import '../core/ui/styles/text_styles.dart';
 
 class TitleSection extends StatefulWidget {
   final String title;
@@ -19,7 +19,7 @@ class _TitleSectionState extends State<TitleSection> {
       children: [
         Text(
           widget.title,
-          style: context.textStyles.textBold.copyWith(fontSize: 16),
+          style: context.textStyles.textBold,
         ),
         widget.child,
       ],

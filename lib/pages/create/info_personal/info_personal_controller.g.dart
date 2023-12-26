@@ -30,6 +30,13 @@ mixin _$InfoPersonalController on InfoPersonalControllerBase, Store {
       (_$emailValidComputed ??= Computed<bool>(() => super.emailValid,
               name: 'InfoPersonalControllerBase.emailValid'))
           .value;
+  Computed<bool>? _$addressValidComputed;
+
+  @override
+  bool get addressValid =>
+      (_$addressValidComputed ??= Computed<bool>(() => super.addressValid,
+              name: 'InfoPersonalControllerBase.addressValid'))
+          .value;
   Computed<bool>? _$isFormValidComputed;
 
   @override
@@ -99,21 +106,55 @@ mixin _$InfoPersonalController on InfoPersonalControllerBase, Store {
     });
   }
 
-  late final _$additionalInformationOpenAtom = Atom(
-      name: 'InfoPersonalControllerBase.additionalInformationOpen',
-      context: context);
+  late final _$_showInfosAtom =
+      Atom(name: 'InfoPersonalControllerBase._showInfos', context: context);
 
-  @override
-  bool get additionalInformationOpen {
-    _$additionalInformationOpenAtom.reportRead();
-    return super.additionalInformationOpen;
+  bool get showInfos {
+    _$_showInfosAtom.reportRead();
+    return super._showInfos;
   }
 
   @override
-  set additionalInformationOpen(bool value) {
-    _$additionalInformationOpenAtom
-        .reportWrite(value, super.additionalInformationOpen, () {
-      super.additionalInformationOpen = value;
+  bool get _showInfos => showInfos;
+
+  @override
+  set _showInfos(bool value) {
+    _$_showInfosAtom.reportWrite(value, super._showInfos, () {
+      super._showInfos = value;
+    });
+  }
+
+  late final _$languageAtom =
+      Atom(name: 'InfoPersonalControllerBase.language', context: context);
+
+  @override
+  Language get language {
+    _$languageAtom.reportRead();
+    return super.language;
+  }
+
+  @override
+  set language(Language value) {
+    _$languageAtom.reportWrite(value, super.language, () {
+      super.language = value;
+    });
+  }
+
+  late final _$_imageAtom =
+      Atom(name: 'InfoPersonalControllerBase._image', context: context);
+
+  Uint8List? get image {
+    _$_imageAtom.reportRead();
+    return super._image;
+  }
+
+  @override
+  Uint8List? get _image => image;
+
+  @override
+  set _image(Uint8List? value) {
+    _$_imageAtom.reportWrite(value, super._image, () {
+      super._image = value;
     });
   }
 
@@ -181,164 +222,68 @@ mixin _$InfoPersonalController on InfoPersonalControllerBase, Store {
     });
   }
 
-  late final _$householdAtom =
-      Atom(name: 'InfoPersonalControllerBase.household', context: context);
+  late final _$addressAtom =
+      Atom(name: 'InfoPersonalControllerBase.address', context: context);
 
   @override
-  String? get household {
-    _$householdAtom.reportRead();
-    return super.household;
+  String? get address {
+    _$addressAtom.reportRead();
+    return super.address;
   }
 
   @override
-  set household(String? value) {
-    _$householdAtom.reportWrite(value, super.household, () {
-      super.household = value;
+  set address(String? value) {
+    _$addressAtom.reportWrite(value, super.address, () {
+      super.address = value;
     });
   }
 
-  late final _$zipAtom =
-      Atom(name: 'InfoPersonalControllerBase.zip', context: context);
+  late final _$zipCodeAtom =
+      Atom(name: 'InfoPersonalControllerBase.zipCode', context: context);
 
   @override
-  String? get zip {
-    _$zipAtom.reportRead();
-    return super.zip;
+  String? get zipCode {
+    _$zipCodeAtom.reportRead();
+    return super.zipCode;
   }
 
   @override
-  set zip(String? value) {
-    _$zipAtom.reportWrite(value, super.zip, () {
-      super.zip = value;
+  set zipCode(String? value) {
+    _$zipCodeAtom.reportWrite(value, super.zipCode, () {
+      super.zipCode = value;
     });
   }
 
-  late final _$birthdateAtom =
-      Atom(name: 'InfoPersonalControllerBase.birthdate', context: context);
+  late final _$cityLocaleAtom =
+      Atom(name: 'InfoPersonalControllerBase.cityLocale', context: context);
 
   @override
-  String? get birthdate {
-    _$birthdateAtom.reportRead();
-    return super.birthdate;
+  String? get cityLocale {
+    _$cityLocaleAtom.reportRead();
+    return super.cityLocale;
   }
 
   @override
-  set birthdate(String? value) {
-    _$birthdateAtom.reportWrite(value, super.birthdate, () {
-      super.birthdate = value;
+  set cityLocale(String? value) {
+    _$cityLocaleAtom.reportWrite(value, super.cityLocale, () {
+      super.cityLocale = value;
     });
   }
 
-  late final _$birthplaceAtom =
-      Atom(name: 'InfoPersonalControllerBase.birthplace', context: context);
+  late final _$saveImageAsyncAction =
+      AsyncAction('InfoPersonalControllerBase.saveImage', context: context);
 
   @override
-  String? get birthplace {
-    _$birthplaceAtom.reportRead();
-    return super.birthplace;
+  Future<void> saveImage(Uint8List imageUint) {
+    return _$saveImageAsyncAction.run(() => super.saveImage(imageUint));
   }
 
-  @override
-  set birthplace(String? value) {
-    _$birthplaceAtom.reportWrite(value, super.birthplace, () {
-      super.birthplace = value;
-    });
-  }
-
-  late final _$drivingLicenseAtom =
-      Atom(name: 'InfoPersonalControllerBase.drivingLicense', context: context);
+  late final _$deleteImageAsyncAction =
+      AsyncAction('InfoPersonalControllerBase.deleteImage', context: context);
 
   @override
-  String? get drivingLicense {
-    _$drivingLicenseAtom.reportRead();
-    return super.drivingLicense;
-  }
-
-  @override
-  set drivingLicense(String? value) {
-    _$drivingLicenseAtom.reportWrite(value, super.drivingLicense, () {
-      super.drivingLicense = value;
-    });
-  }
-
-  late final _$sexAtom =
-      Atom(name: 'InfoPersonalControllerBase.sex', context: context);
-
-  @override
-  String? get sex {
-    _$sexAtom.reportRead();
-    return super.sex;
-  }
-
-  @override
-  set sex(String? value) {
-    _$sexAtom.reportWrite(value, super.sex, () {
-      super.sex = value;
-    });
-  }
-
-  late final _$nationalityAtom =
-      Atom(name: 'InfoPersonalControllerBase.nationality', context: context);
-
-  @override
-  String? get nationality {
-    _$nationalityAtom.reportRead();
-    return super.nationality;
-  }
-
-  @override
-  set nationality(String? value) {
-    _$nationalityAtom.reportWrite(value, super.nationality, () {
-      super.nationality = value;
-    });
-  }
-
-  late final _$maritalStatusAtom =
-      Atom(name: 'InfoPersonalControllerBase.maritalStatus', context: context);
-
-  @override
-  String? get maritalStatus {
-    _$maritalStatusAtom.reportRead();
-    return super.maritalStatus;
-  }
-
-  @override
-  set maritalStatus(String? value) {
-    _$maritalStatusAtom.reportWrite(value, super.maritalStatus, () {
-      super.maritalStatus = value;
-    });
-  }
-
-  late final _$linkedInAtom =
-      Atom(name: 'InfoPersonalControllerBase.linkedIn', context: context);
-
-  @override
-  String? get linkedIn {
-    _$linkedInAtom.reportRead();
-    return super.linkedIn;
-  }
-
-  @override
-  set linkedIn(String? value) {
-    _$linkedInAtom.reportWrite(value, super.linkedIn, () {
-      super.linkedIn = value;
-    });
-  }
-
-  late final _$webSiteAtom =
-      Atom(name: 'InfoPersonalControllerBase.webSite', context: context);
-
-  @override
-  String? get webSite {
-    _$webSiteAtom.reportRead();
-    return super.webSite;
-  }
-
-  @override
-  set webSite(String? value) {
-    _$webSiteAtom.reportWrite(value, super.webSite, () {
-      super.webSite = value;
-    });
+  Future<void> deleteImage() {
+    return _$deleteImageAsyncAction.run(() => super.deleteImage());
   }
 
   late final _$saveAsyncAction =
@@ -353,12 +298,22 @@ mixin _$InfoPersonalController on InfoPersonalControllerBase, Store {
       ActionController(name: 'InfoPersonalControllerBase', context: context);
 
   @override
-  void setAdditionalInformationOpen() {
-    final _$actionInfo =
-        _$InfoPersonalControllerBaseActionController.startAction(
-            name: 'InfoPersonalControllerBase.setAdditionalInformationOpen');
+  void changeShowInfos() {
+    final _$actionInfo = _$InfoPersonalControllerBaseActionController
+        .startAction(name: 'InfoPersonalControllerBase.changeShowInfos');
     try {
-      return super.setAdditionalInformationOpen();
+      return super.changeShowInfos();
+    } finally {
+      _$InfoPersonalControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setLanguage(Language value) {
+    final _$actionInfo = _$InfoPersonalControllerBaseActionController
+        .startAction(name: 'InfoPersonalControllerBase.setLanguage');
+    try {
+      return super.setLanguage(value);
     } finally {
       _$InfoPersonalControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -398,26 +353,75 @@ mixin _$InfoPersonalController on InfoPersonalControllerBase, Store {
   }
 
   @override
+  void setPhone(String value) {
+    final _$actionInfo = _$InfoPersonalControllerBaseActionController
+        .startAction(name: 'InfoPersonalControllerBase.setPhone');
+    try {
+      return super.setPhone(value);
+    } finally {
+      _$InfoPersonalControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAddress(String value) {
+    final _$actionInfo = _$InfoPersonalControllerBaseActionController
+        .startAction(name: 'InfoPersonalControllerBase.setAddress');
+    try {
+      return super.setAddress(value);
+    } finally {
+      _$InfoPersonalControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setZipCode(String value) {
+    final _$actionInfo = _$InfoPersonalControllerBaseActionController
+        .startAction(name: 'InfoPersonalControllerBase.setZipCode');
+    try {
+      return super.setZipCode(value);
+    } finally {
+      _$InfoPersonalControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCityLocale(String value) {
+    final _$actionInfo = _$InfoPersonalControllerBaseActionController
+        .startAction(name: 'InfoPersonalControllerBase.setCityLocale');
+    try {
+      return super.setCityLocale(value);
+    } finally {
+      _$InfoPersonalControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void invalidSendPressed() {
+    final _$actionInfo = _$InfoPersonalControllerBaseActionController
+        .startAction(name: 'InfoPersonalControllerBase.invalidSendPressed');
+    try {
+      return super.invalidSendPressed();
+    } finally {
+      _$InfoPersonalControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-additionalInformationOpen: ${additionalInformationOpen},
+language: ${language},
 firstName: ${firstName},
 surname: ${surname},
 email: ${email},
 phone: ${phone},
-household: ${household},
-zip: ${zip},
-birthdate: ${birthdate},
-birthplace: ${birthplace},
-drivingLicense: ${drivingLicense},
-sex: ${sex},
-nationality: ${nationality},
-maritalStatus: ${maritalStatus},
-linkedIn: ${linkedIn},
-webSite: ${webSite},
+address: ${address},
+zipCode: ${zipCode},
+cityLocale: ${cityLocale},
 firstNameValid: ${firstNameValid},
 surnameValid: ${surnameValid},
 emailValid: ${emailValid},
+addressValid: ${addressValid},
 isFormValid: ${isFormValid},
 sendPressed: ${sendPressed}
     ''';

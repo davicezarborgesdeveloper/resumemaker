@@ -41,3 +41,8 @@ enum Language {
   static Language parse(String acronomyn) =>
       values.firstWhere((s) => s.acronomyn == acronomyn);
 }
+
+enum TypeSource {
+  camera,
+  gallery,
+}

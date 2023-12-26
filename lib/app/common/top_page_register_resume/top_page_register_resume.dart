@@ -13,8 +13,12 @@ class TopPageRegisterResume extends StatelessWidget {
   final String? title;
   final int? step;
   final Color color;
-  const TopPageRegisterResume(
-      {this.title, this.step, required this.color, super.key});
+  const TopPageRegisterResume({
+    this.title,
+    this.step,
+    required this.color,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +27,7 @@ class TopPageRegisterResume extends StatelessWidget {
       child: Container(
         color: color,
         height: (context.screenHeight * .45),
-        padding: EdgeInsets.only(top: 50),
+        padding: const EdgeInsets.only(top: 50),
         alignment: Alignment.center,
         child: Column(
           children: [
